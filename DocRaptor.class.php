@@ -70,7 +70,9 @@ class DocRaptor {
 				$fields['doc[document_url]'] = urlencode($this->document_url);
 			}
 			
-			foreach($fields as $key=>$value) { $fields_string .= $key.'='.$value.'&'; } 
+			foreach($fields as $key=>$value) { $fields_string .= $key.'='.$value.'&'; }
+			$fields_string = 'doc[prince_options][media]=print&' . $fields_string;
+			
 			rtrim($fields_string,'&');
 			$ch = curl_init();
 			curl_setopt($ch,CURLOPT_URL,$url);
